@@ -2,14 +2,16 @@
 
 # Check if the current conda environment is "comfy"
 if [ "$CONDA_DEFAULT_ENV" != "comfy" ]; then
+  echo "Please create a conda environment named 'comfy' first. Run the following commands:"
   echo "conda init"
-  echo "conda create -n comfy python=3.12.7"
-  echo "conda activate comfy" >> ~/.bashrc
-  echo echo "conda activate comfy" >> ~/.zshrc
+  echo "conda create -ny comfy python=3.12.7"
+  echo "conda activate comfy"
   exit 1
 fi
 
 echo "The current conda environment is 'comfy'."
+echo "conda activate comfy" >> ~/.bashrc
+echo "conda activate comfy" >> ~/.zshrc
 
 conda install -y vim
 conda install -y sshpass
