@@ -6,6 +6,8 @@ if [ "$CONDA_DEFAULT_ENV" != "comfy" ]; then
   echo "conda init"
   echo "conda create -ny comfy python=3.12.7"
   echo "conda activate comfy"
+  cd ~
+  touch abc
   exit 1
 fi
 
@@ -15,10 +17,9 @@ echo "conda activate comfy" >> ~/.zshrc
 
 conda install -y vim
 conda install -y sshpass
-sudo apt install autossh
 
 echo "Create the tunnel and start scripts."
-cd ..
+cd ~
 echo 'sshpass -p "" autossh -M 0 -R 9999:localhost:8188 -p 7777 -o ServerAliveInterval=60 -o StrictHostKeyChecking=no s@nowis.zapto.org' > tunnel
 chmod +x tunnel
 echo 'python ComfyUI/main.py --highvram' > start
@@ -69,6 +70,7 @@ wget -O models/clip/t5xxl_fp8_e4m3fn.safetensors "https://huggingface.co/Aitrepr
 wget -O models/checkpoints/sd_xl_base_1.0_0.9vae.safetensors "https://huggingface.co/Aitrepreneur/FLX/resolve/main/sd_xl_base_1.0_0.9vae.safetensors?download=true"
 
 wget -O models/controlnet/diffusion_pytorch_model_promax.safetensors "https://huggingface.co/Aitrepreneur/FLX/resolve/main/diffusion_pytorch_model_promax.safetensors?download=true"
+sudo apt install autossh
 
 # Done
 echo "==============Setup complete=============="
