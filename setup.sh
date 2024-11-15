@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Check if the current conda environment is "comfy"
 if [ "$CONDA_DEFAULT_ENV" != "comfy" ]; then
