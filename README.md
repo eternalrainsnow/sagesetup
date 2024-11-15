@@ -1,1 +1,1 @@
-# sagesetup
+run `setup.sh`
